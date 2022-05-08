@@ -56,9 +56,6 @@ func newDB(d *DB) *DB {
 }
 
 // Begin begins a transaction
-// TODO: コミット1
-// コミットをまとめよう
-// コミットまとめ
 func (db *DB) Begin() *gorm.DB {
 	return db.Connection.Begin()
 }
