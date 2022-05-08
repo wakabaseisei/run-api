@@ -31,6 +31,12 @@ func (r *Routing) setRouting() {
 	userUsecase := usecase.NewUserUsecase(userRepository)
 	userController := controllers.NewUserController(userUsecase)
 
+	r.Gin.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"Home": "200 OK",
+		})
+	})
+
 	r.Gin.GET("/users", func(c *gin.Context) { userController.GetAll(c) })
 	r.Gin.GET("/users/:id", func(c *gin.Context) { userController.Get(c) })
 	r.Gin.POST("/users", func(c *gin.Context) { userController.Post(c) })

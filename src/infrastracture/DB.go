@@ -23,19 +23,31 @@ func NewDB() *DB {
 	})
 }
 
-func NewTestDB() *DB {
+func NewDevDB() *DB {
 	c := NewConfig()
 	return newDB(&DB{
-		Host:     c.DB.Test.Host,
-		Username: c.DB.Test.Username,
-		Password: c.DB.Test.Password,
-		DBName:   c.DB.Test.DBName,
+		Host:     c.DB.Dev.Host,
+		Username: c.DB.Dev.Username,
+		Password: c.DB.Dev.Password,
+		DBName:   c.DB.Dev.DBName,
+	})
+}
+
+func NewRunDB() *DB {
+	c := NewConfig()
+	return newDB(&DB{
+		Host:     c.DB.Run.Host,
+		Username: c.DB.Run.Username,
+		Password: c.DB.Run.Password,
+		DBName:   c.DB.Run.DBName,
 	})
 }
 
 func newDB(d *DB) *DB {
 	// https://github.com/go-sql-driver/mysql#examples
 	db, err := gorm.Open("mysql", d.Username+":"+d.Password+"@tcp("+d.Host+")/"+d.DBName+"?charset=utf8&parseTime=True&loc=Local")
+	// dbURI := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", d.Username, d.Password, d.Host, "3306", d.DBName)
+	// db, err := gorm.Open("mysql", dbURI)
 	if err != nil {
 		panic(err.Error())
 	}
