@@ -8,6 +8,7 @@ import (
 	"github.com/wakabaseisei/runapp/usecase"
 )
 
+// ハンドラー
 type UserHandler interface {
 	Get(c Context)
 	GetAll(c Context)
