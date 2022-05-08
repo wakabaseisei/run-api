@@ -55,7 +55,6 @@ func newDB(d *DB) *DB {
 	return d
 }
 
-// Begin begins a transaction
 func (db *DB) Begin() *gorm.DB {
 	return db.Connection.Begin()
 }
