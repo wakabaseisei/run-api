@@ -1,8 +1,6 @@
 package infrastructure
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -47,9 +45,9 @@ func NewRunDB() *DB {
 
 func newDB(d *DB) *DB {
 	// https://github.com/go-sql-driver/mysql#examples
-	// db, err := gorm.Open("mysql", d.Username+":"+d.Password+"@tcp("+d.Host+")/"+d.DBName+"?charset=utf8&parseTime=True&loc=Local")
-	dbURI := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", d.Username, d.Password, d.Host, "3306", d.DBName)
-	db, err := gorm.Open("mysql", dbURI)
+	db, err := gorm.Open("mysql", d.Username+":"+d.Password+"@tcp("+d.Host+")/"+d.DBName+"?charset=utf8&parseTime=True&loc=Local")
+	// dbURI := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", d.Username, d.Password, d.Host, "3306", d.DBName)
+	// db, err := gorm.Open("mysql", dbURI)
 	if err != nil {
 		panic(err.Error())
 	}

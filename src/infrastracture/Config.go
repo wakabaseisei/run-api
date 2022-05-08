@@ -45,7 +45,7 @@ func NewConfig() *Config {
 	// docker-compose用
 	c.DB.Dev.Host = "mysql"
 	c.DB.Dev.Username = "go_user"
-	c.DB.Dev.Password = password
+	c.DB.Dev.Password = "password"
 	c.DB.Dev.DBName = "go_database"
 
 	// Cloud Run用
